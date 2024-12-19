@@ -11,18 +11,18 @@ public class FindingAnExampleJUnitTest {
 
     @BeforeAll
     static void beforeAll() {
+        Configuration.baseUrl = "https://github.com";
         Configuration.browserSize = "1928x1080";
         Configuration.pageLoadStrategy = "eager";
     }
+
     @Test
     void successfulFindingAnExampleJUnitTest() {
-        open("https://github.com/");
-        $("[class=search-input]").click();
-        $("[id=query-builder-test]").setValue("Selenide").pressEnter();
-        $("[class=prc-Link-Link-85e08]").click();
+        open("/selenide/selenide");
         $("[id=wiki-tab]").click();
-        $("[id=wiki-body]").shouldHave(text("Soft assertions"));
-        $("[id=wiki-body]").$(byText("Soft assertions")).click();
+        $("[id=wiki-pages-filter]").setValue("Soft");
+        $("[id=wiki-pages-box]").shouldHave(text("SoftAssertions"));
+        $("[id=wiki-pages-box]").$(byText("SoftAssertions")).click();
         $("[class=markdown-body]").shouldHave(text("3. Using JUnit5 extend test class:"));
         String expectedCode =
                 """
