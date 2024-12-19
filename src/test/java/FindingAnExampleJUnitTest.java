@@ -14,7 +14,6 @@ public class FindingAnExampleJUnitTest {
         Configuration.baseUrl = "https://github.com";
         Configuration.browserSize = "1928x1080";
         Configuration.pageLoadStrategy = "eager";
-
     }
 
     @Test
